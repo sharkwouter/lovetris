@@ -12,9 +12,9 @@ function Shape:new(x, y, rotation)
     table.insert(self.blocks, Block(self.x+0, self.y+1)) 
 end
 
-function Shape:update(dt)
+function Shape:update(dt, level)
   for i,b in ipairs(self.blocks) do
-        b:update(dt)
+        b:update(dt, level)
     end
 end
 
