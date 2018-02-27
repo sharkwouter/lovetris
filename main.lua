@@ -3,7 +3,7 @@ function love.load()
   Object = require "classic"
   
   --global variables
-  blocksize = 32
+  blocksize = 70
   fallspeed = 100
   
   --Load our classes
@@ -15,7 +15,7 @@ function love.load()
   --Set the background color
   love.graphics.setBackgroundColor(255, 255, 255)
   
-  controller = Controller(View(200, 0))
+  controller = Controller(View(blocksize, 0))
   
 end
 

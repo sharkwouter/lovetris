@@ -6,8 +6,8 @@ function Block:new(x, y)
 end
 
 function Block:update(dt)
-  self.drawx = self.x*blocksize+self.x
-  self.drawy = self.y*blocksize+self.y+blocksize/2
+  self.drawx = self.x*blocksize
+  self.drawy = self.y*blocksize+blocksize/2
 end
 
 function Block:draw(viewx, viewy)
