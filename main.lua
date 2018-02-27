@@ -4,7 +4,6 @@ function love.load()
   
   --global variables
   blocksize = 70
-  fallspeed = 100
   
   --Load our classes
   require "view"
@@ -12,8 +11,13 @@ function love.load()
   require "shape"
   require "controller"
   
+  --Set the window title
+  love.window.setTitle("lovetris")
+  
   --Set the background color
   love.graphics.setBackgroundColor(255, 255, 255)
+  
+  
   
   controller = Controller(View(blocksize, 0))
   
