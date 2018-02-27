@@ -15,7 +15,7 @@ function love.load()
   --Set the background color
   love.graphics.setBackgroundColor(255, 255, 255)
   
-  currentblock = Shape(0, 0, 0)
+  controller = Controller(View(200, 0))
   
 end
 
@@ -34,10 +34,10 @@ function love.update(dt)
     playerMove(270)
   end
   
-  currentblock:update(dt)
+  controller:update(dt)
   
 end
 
 function love.draw()
-  currentblock:draw()
+  controller:draw()
 end

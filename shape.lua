@@ -18,9 +18,9 @@ function Shape:update(dt)
     end
 end
 
-function Shape:draw()
+function Shape:draw(viewx, viewy)
   for i,b in ipairs(self.blocks) do
-        b:draw()
+        b:draw(viewx, viewy)
     end
 end
 
