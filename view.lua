@@ -29,7 +29,8 @@ function View:update(dt)
 end
 
 function View:draw()
-  love.graphics.setColor(0, 0, 0)
+  --Draw the field
+  love.graphics.setColor(colors.black)
   
   for linehor=0, 20, 1 do
     love.graphics.line(self.x, self.y+blocksize/2+linehor*blocksize, self.x+self.width, self.y+blocksize/2+linehor*blocksize)

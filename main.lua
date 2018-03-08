@@ -3,7 +3,11 @@ function love.load()
   Object = require "classic"
   
   --global variables
-  blocksize = 70
+  blocksize = 48
+  droptimer = 1 --in seconds
+  
+  --Color variables
+  require "colors"
   
   --Load our classes
   require "view"
@@ -15,12 +19,10 @@ function love.load()
   love.window.setTitle("lovetris")
   
   --Set the background color
-  love.graphics.setBackgroundColor(255, 255, 255)
+  love.graphics.setBackgroundColor(colors.white)
   
-  
-  
+  --Create controller, which controls all movement and the view
   controller = Controller(View(blocksize, 0))
-  
 end
 
 function love.update(dt)
