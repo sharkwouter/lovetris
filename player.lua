@@ -1,19 +1,34 @@
 Player = Object:extend()
 
-function Player:new(config)
+function Player:new(gamepad)
+  self.gamepad = gamepad
+  
   self.moveX = 0
   self.speedup= false
 end
 
 function Player:update(dt)
-  if love.keyboard.isDown("left", "a") then
-    self.moveX = -1
-  end
-  if love.keyboard.isDown("right", "d") then
-    self.moveX = 1
-  end
-   if love.keyboard.isDown("down", "s") then
-    self.speedup = true
+  --use keyboard if the controller doesn't exist
+  if not self.gamepad then
+    if love.keyboard.isDown("left", "a") then
+      self.moveX = -1
+    end
+    if love.keyboard.isDown("right", "d") then
+      self.moveX = 1
+    end
+    if love.keyboard.isDown("down", "s") then
+      self.speedup = true
+    end
+  else
+    if self.gamepad:isGamepadDown("dpleft") or self.gamepad:getGamepadAxis("leftx") < -0.5 then
+      self.moveX = -1
+    end
+    if self.gamepad:isGamepadDown("dpright") or self.gamepad:getGamepadAxis("leftx") > 0.5  then
+      self.moveX = 1
+    end
+    if self.gamepad:isGamepadDown("dpdown")  or self.gamepad:getGamepadAxis("lefty") > 0.5 then
+      self.speedup = true
+    end
   end
 end
 

@@ -10,6 +10,11 @@ function love.load()
   droptimer = 1 --in seconds
   movecooldown = 0.1
   speedupcooldown = 0.05
+  gamepads = love.joystick.getJoysticks()
+  
+  for i, joystick in ipairs(gamepads) do
+        print("gamepad "..joystick:getID()..": "..joystick:getName())
+    end
   
   --Color variables
   colors={
@@ -38,11 +43,15 @@ function love.load()
   love.graphics.setBackgroundColor(colors.white)
   
   --Create controller, which controls all movement and the view
-  controller = Controller(View(blocksize, 0),Player("config/keyboard-player1.lua"))
+  controllers = { }
+  controllers[1] = Controller(View(blocksize, 0),Player(gamepads[1]))
+  controllers[2] = Controller(View(blocksize+600, 0),Player(gamepads[2]))
 end
 
 function love.update(dt)
-  controller:update(dt)
+  for i, controller in ipairs(controllers) do
+    controller:update(dt)
+  end
   
   if love.keyboard.isDown("escape") then
     love.event.quit()
@@ -54,5 +63,7 @@ function love.update(dt)
 end
 
 function love.draw()
-  controller:draw()
+  for i, controller in ipairs(controllers) do
+    controller:draw()
+  end
 end
