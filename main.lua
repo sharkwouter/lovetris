@@ -5,7 +5,8 @@ function love.load()
   --global variables
   blocksize = 48
   droptimer = 1 --in seconds
-  movetimer = 0.1
+  movecooldown = 0.1
+  speedupcooldown = 0.05
   
   --Color variables
   colors={

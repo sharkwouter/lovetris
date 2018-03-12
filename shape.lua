@@ -77,3 +77,7 @@ function Shape:move(movex,movey)
     b:move(movex,movey)
   end
 end
+
+function Shape:getBlocks()
+  return self.blocks
+end
