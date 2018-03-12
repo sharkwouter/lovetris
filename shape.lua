@@ -7,12 +7,6 @@ function Shape:new(x, y, shape)
   self:setShape(shape)
 end
 
-function Shape:update(dt, level)
-  for i,b in ipairs(self.blocks) do
-    b:update(dt, level)
-  end
-end
-
 function Shape:draw(viewx, viewy)
   for i,b in ipairs(self.blocks) do
     b:draw(viewx, viewy)
@@ -22,37 +16,37 @@ end
 function Shape:setShape(shape)
   --Create the array of blocks in the correct color based on the value of shape
   self.blocks = {}
-  if(shape == 0) then
+  if(shape == 1) then
     self.color = colors.orange
     table.insert(self.blocks, Block(self.x+0, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+1, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+2, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+0, self.y+1, self.color))
-  elseif(shape == 1) then
+  elseif(shape == 2) then
     self.color = colors.blue
     table.insert(self.blocks, Block(self.x+0, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+1, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+2, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+2, self.y+1, self.color))
-  elseif(shape == 2) then
+  elseif(shape == 3) then
     self.color = colors.purple
     table.insert(self.blocks, Block(self.x+0, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+1, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+2, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+1, self.y+1, self.color))
-  elseif(shape == 3) then
+  elseif(shape == 4) then
     self.color = colors.red
     table.insert(self.blocks, Block(self.x+1, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+1, self.y+1, self.color))
     table.insert(self.blocks, Block(self.x+0, self.y+1, self.color))
     table.insert(self.blocks, Block(self.x+0, self.y+2, self.color))
-  elseif(shape == 4) then
+  elseif(shape == 5) then
     self.color = colors.green
     table.insert(self.blocks, Block(self.x+0, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+0, self.y+1, self.color))
     table.insert(self.blocks, Block(self.x+1, self.y+1, self.color))
     table.insert(self.blocks, Block(self.x+1, self.y+2, self.color))
-  elseif(shape == 5) then
+  elseif(shape == 6) then
     self.color = colors.cyan
     table.insert(self.blocks, Block(self.x+0, self.y+0, self.color))
     table.insert(self.blocks, Block(self.x+1, self.y+0, self.color))

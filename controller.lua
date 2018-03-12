@@ -14,13 +14,15 @@ function Controller:new(view, player)
   self.viewX = self.view:getX()
   self.viewY = self.view:getY()
   
-  self.currentshape = Shape(3, -1, math.random(6))
+  self.currentshape = Shape(3, -1, math.random(7))
 end
 
 function Controller:update(dt)
   self.view:update(dt)
   self.player:update(dt)
-  self.currentshape:update(dt)
+  
+  --Check if we have lines to clear first
+  self:checkForLines()
   
   --Timer to prevent the blocks from moving to fast when the player holds a move button
   self.movecooldown = self.movecooldown - dt
@@ -69,7 +71,7 @@ function Controller:resetCurrentshape()
   if(self:isGameOver()) then
       self:gameOver()
   end
-  self.currentshape = Shape(3, -1, math.random(6))
+  self.currentshape = Shape(3, -1, math.random(7))
 end
 
 function Controller:checkFree(xpos, ypos)
@@ -96,14 +98,40 @@ function Controller:currentshapeCanMove(moveX, moveY)
 end
 
 function Controller:isGameOver()
-     for i,b in ipairs(self.placed) do
-       if(b:getY() < 0) then
-          return true
-       end
-   end
+  for i,b in ipairs(self.placed) do
+    if(b:getY() < 0) then
+      return true
+    end
+  end
    return false
 end
 
 function Controller:gameOver()
   self.placed = { }
+end
+
+--Checks if there are lines to clear and adjusts the field accordingly
+function Controller:checkForLines()
+  for ypos=19, -1, -1 do
+    local full = true --If no position is free, full will remain true
+    for xpos=0, 10, 1 do
+      if(self:checkFree(xpos,ypos)) then
+        full = false
+        break
+      end
+    end
+    if(full) then
+      --first make a list of items to remove
+      local toRemove = { }
+      for i=#self.placed, 1, -1 do
+        print(i)
+        local blockY = self.placed[i]:getY()
+        if(blockY == ypos) then
+          table.remove(self.placed, i)
+        elseif(blockY < ypos) then
+          self.placed[i]:move(0,1)
+        end
+      end
+    end
+  end
 end
