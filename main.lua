@@ -2,6 +2,9 @@ function love.load()
   --Load the classic library so we can do oop
   Object = require "classic"
   
+  --Set the random seed
+  math.randomseed(os.time())
+  
   --global variables
   blocksize = 48
   droptimer = 1 --in seconds
