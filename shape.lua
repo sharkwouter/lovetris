@@ -77,7 +77,7 @@ function Shape:rotate(rotation)
   for i,b in ipairs(self.blocks) do
     local startX = b:getX()-self.x
     local startY = b:getY()-self.y
-    local rad = math.atan2(startX,startY)
+    local rad = math.atan2(startX,startY)-0.5*math.pi+rotation/180*math.pi
     local cos = math.cos(rad)
     local sin = math.sin(rad)
     local distance = math.sqrt(startX*startX+startY*startY)
