@@ -7,8 +7,8 @@ function View:new(x, y)
   self.height = blocksize*20.5
   
   --Resize the window if needed
-  self.widthWindow = love.window.getWidth()
-  self.heightWindow = love.window.getHeight()
+  self.widthWindow = love.graphics.getWidth()
+  self.heightWindow = love.graphics.getHeight()
   
   self.widthRequired = self.x+self.width+blocksize
   self.heightRequired = self.y+self.height+blocksize

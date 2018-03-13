@@ -2,9 +2,6 @@ function love.load()
   --Load the classic library so we can do oop
   Object = require "libraries/classic"
   
-  --Load the transform library, used for rotating things
-  require "libraries/transform"
-  
   --Set the random seed
   math.randomseed(os.time())
   
