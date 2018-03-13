@@ -32,7 +32,7 @@ function Controller:update(dt)
   
   --process user input
     if(self.player:getRotate() and self.rotatecooldown <= 0) then
-    self.currentshape:rotate(1)
+    self.currentshape:rotate(90)
     self.rotatecooldown = rotatecooldown
   end
   

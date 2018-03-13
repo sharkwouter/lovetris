@@ -18,6 +18,11 @@ function Block:move(moveX,moveY)
   self.y = self.y + moveY
 end
 
+function Block:setPosition(xpos,ypos)
+  self.x = xpos
+  self.y = ypos
+end
+
 function Block:getX()
   return self.x
 end
