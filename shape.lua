@@ -72,6 +72,30 @@ function Shape:move(movex,movey)
   end
 end
 
+function Shape:rotate(direction)
+  --first we need the width and hight of the block's rotation space
+  local rotationSize = 2
+  for i,b in ipairs(self.blocks) do
+    local startX = b:getX()-self.x
+    local startY = b:getY()-self.y
+    if(startX > rotationSize) then
+      rotationSize = startX
+    elseif(startY > rotationSize) then
+      rotationSize = startY
+    end
+  end
+  
+  local middlepoint = rotationSize/2
+  --rotate
+  for i,b in ipairs(self.blocks) do
+    local startX = b:getX()-self.x
+    local startY = b:getY()-self.y
+    local moveX = (middlepoint-startX)*math.cos(direction*math.pi)
+    local moveY = (middlepoint-startY)*math.sin(direction*math.pi)
+    b:move(moveX,moveY)
+  end
+end
+
 function Shape:getBlocks()
   return self.blocks
 end

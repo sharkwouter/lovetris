@@ -1,6 +1,9 @@
 function love.load()
   --Load the classic library so we can do oop
-  Object = require "classic"
+  Object = require "libraries/classic"
+  
+  --Load the transform library, used for rotating things
+  require "libraries/transform"
   
   --Set the random seed
   math.randomseed(os.time())
@@ -10,6 +13,7 @@ function love.load()
   droptimer = 1 --in seconds
   movecooldown = 0.1
   speedupcooldown = 0.05
+  rotatecooldown = 0.25
   gamepads = love.joystick.getJoysticks()
   
   for i, joystick in ipairs(gamepads) do
@@ -45,7 +49,7 @@ function love.load()
   --Create controller, which controls all movement and the view
   controllers = { }
   controllers[1] = Controller(View(blocksize, 0),Player(gamepads[1]))
-  controllers[2] = Controller(View(blocksize+600, 0),Player(gamepads[2]))
+  --controllers[2] = Controller(View(blocksize+600, 0),Player(gamepads[2]))
 end
 
 function love.update(dt)

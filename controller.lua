@@ -8,6 +8,7 @@ function Controller:new(view, player)
   self.droptimer = droptimer
   self.movecooldown = 0
   self.speedupcooldown = 0
+  self.rotatecooldown = 0
   
   self.placed = { } --Array of blocks on the field
   
@@ -27,8 +28,14 @@ function Controller:update(dt)
   --Timer to prevent the blocks from moving to fast when the player holds a move button
   self.movecooldown = self.movecooldown - dt
   self.speedupcooldown = self.speedupcooldown - dt
+  self.rotatecooldown = self.rotatecooldown - dt
   
   --process user input
+    if(self.player:getRotate() and self.rotatecooldown <= 0) then
+    self.currentshape:rotate(1)
+    self.rotatecooldown = rotatecooldown
+  end
+  
   local moveX = self.player:getMoveX()
   if(moveX ~= 0 and self:currentshapeCanMove(moveX, 0) and self.movecooldown <= 0) then
     self.currentshape:move(moveX,0)
