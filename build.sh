@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Make sure we're running in the correct directory
+cd "$(dirname "$0")"
+
 NAME="lovetris"
 BUILDDIR="build"
 LOVEFILE="${BUILDDIR}/${NAME}.love"
@@ -27,6 +30,7 @@ for platform in ${PLATFORMS}; do
 	
 	#copy dependencies
 	cp deps/${platform}/copy/* ${BUILDDIR}/${platform}/
+	
+	#Create a zip with everything you need to run the game
+	zip -9 -r ${BUILDDIR}/${NAME}-${platform}.zip ${BUILDDIR}/${platform}/
 done
-
-
