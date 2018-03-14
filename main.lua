@@ -11,6 +11,7 @@ function love.load()
   movecooldown = 0.1
   speedupcooldown = 0.05
   rotatecooldown = 0.25
+  font = love.graphics.newFont("fonts/DejaVuSansMono-Bold.ttf", blocksize/2 )
   gamepads = love.joystick.getJoysticks()
   
   for i, joystick in ipairs(gamepads) do
@@ -31,10 +32,10 @@ function love.load()
   }
   
   --Load our classes
-  require "player"
-  require "view"
   require "block"
   require "shape"
+  require "player"
+  require "view"
   require "controller"
   
   --Set the window title
@@ -43,10 +44,17 @@ function love.load()
   --Set the background color
   love.graphics.setBackgroundColor(colors.white)
   
+  --Set the font
+  love.graphics.setFont(font)
+  
   --Create controller, which controls all movement and the view
   controllers = { }
   controllers[1] = Controller(View(blocksize, 0),Player(gamepads[1]))
-  --controllers[2] = Controller(View(blocksize+600, 0),Player(gamepads[2]))
+  controllers[2] = Controller(View(blocksize*17, 0),Player(gamepads[2]))
+  
+    
+  --Window size
+  love.window.setMode(blocksize*17*#controllers, blocksize*21.5)
 end
 
 function love.update(dt)

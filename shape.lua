@@ -3,8 +3,9 @@ Shape = Object:extend()
 function Shape:new(x, y, shape)
   self.x = x
   self.y = y
+  self.shape = shape
   
-  self:setShape(shape)
+  self:setShape(self.shape)
 end
 
 function Shape:draw(viewx, viewy)
@@ -90,4 +91,9 @@ end
 
 function Shape:getBlocks()
   return self.blocks
+end
+
+function Shape:getShape()
+  print(self.shape)
+  return self.shape
 end
