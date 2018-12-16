@@ -1,4 +1,5 @@
 # This software uses Classic:
+
 Copyright (c) 2014, rxi
 
 
@@ -21,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 # This software uses LOVE:
+
 LOVE is Copyright (c) 2006-2016 LOVE Development Team
 
 This software is provided 'as-is', without any express or implied
@@ -45,6 +47,7 @@ distribution.
 ---------
 
 # This software uses LuaJIT:
+
 LuaJIT is Copyright (c) 2005-2015 Mike Pall
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -143,8 +146,7 @@ DEALINGS IN THE SOFTWARE.
 
 ---------
 
-#This software uses the following LGPL libraries on Windows, Mac OS X, Linux,
-and Android:
+#This software uses the following LGPL libraries on Windows, Mac OS X, Linux, and Android:
 
  - libmpg123
      Website: http://www.mpg123.de/

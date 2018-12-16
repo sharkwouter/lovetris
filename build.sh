@@ -1,17 +1,19 @@
 #!/bin/bash
-set -ex
+set -e
 
 #Set the working directory
 WORKDIR="$(dirname "$0")"
 cd ${WORKDIR}
 
-# Make sure we're running in the correct directory
+# Set dictories, platforms and other variables
 NAME="lovetris"
 SOURCEDIR="src"
 BUILDDIR="build"
 DEPSDIR="deps"
 LOVEFILE="${BUILDDIR}/${NAME}.love"
 PLATFORMS="win32 win64 lin32 lin64"
+LICENSE="LICENSE.md"
+THIRDPARTYLICENSE="THIRD-PARTY-LICENSE.md"
 
 #Create new build directory
 rm -rf ${BUILDDIR}
@@ -34,6 +36,10 @@ for platform in ${PLATFORMS}; do
 	
 	#copy dependencies
 	cp ${DEPSDIR}/${platform}/copy/* ${BUILDDIR}/${platform}/
+
+	#copy license files
+	cp ${LICENSE} ${BUILDDIR}/${platform}/license.txt
+	cp ${THIRDPARTYLICENSE} ${BUILDDIR}/${platform}/third-party-licenses.txt
 	
 	#Create a zip with everything you need to run the game
 	zip -9 -r ${BUILDDIR}/${NAME}-${platform}.zip ${BUILDDIR}/${platform}/
